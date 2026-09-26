@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 interface Data {
     id?: number,
     title: string
@@ -5,7 +6,7 @@ interface Data {
     pages: number
 }
 
-export const data: Data[] = [
+export let data: Data[] = [
     {
         id: 1,
         title: 'Dummy title 1',
