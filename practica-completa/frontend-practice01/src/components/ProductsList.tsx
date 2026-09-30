@@ -1,9 +1,11 @@
-import { useState } from 'react'
-import type { Product } from '../types'
-import { data } from '../data'
+import type { Product } from "../types"
 
-const ProductList = () => {
-    const [products, setProducts] = useState<Product[]>(data)
+interface ProductListProps {
+    products: Product[]
+}
+
+const ProductList = ({ products }: ProductListProps) => {
+
 
     return (
         <ul>
