@@ -10,14 +10,14 @@ import Form from './Form'
 
 
 const App = () => {
-  const [products, setProducts] = useState<Product[] | []>([])
-  return (
-    <div>
-      Hola mundo, vamos a comenzar a probar los tipados con el frontend.
-      <ProductList products={products} />
-      <Form />
-    </div>
-  )
+    const [products, setProducts] = useState<Product[] | []>([])
+    return (
+        <div>
+            Hola mundo, vamos a comenzar a probar los tipados con el frontend.
+            <ProductList products={products} />
+            <Form />
+        </div>
+    )
 }
 
 export default App
