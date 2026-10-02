@@ -10,6 +10,10 @@ const Form = () => {
         console.log('Hola mundo estamos probando')
     }
 
+    const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+
+    }
+
     return (
         <>
             <h2>Agregate product</h2>
@@ -38,6 +42,7 @@ const Form = () => {
         </>
 
     )
+
 }
 
 export default Form
