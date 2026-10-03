@@ -1,42 +1,65 @@
 import { useState } from 'react'
+import { data } from '../data'
+import type { Product } from '../types'
 
-const Form = () => {
+
+interface FormProps {
+    setProducts: React.Dispatch<React.SetStateAction<Product[]>>
+}
+
+const Form: React.FC<FormProps> = ({ setProducts }) => {
     const [name, setName] = useState<string>('')
     const [price, setPrice] = useState<string>('')
     const [description, setDescription] = useState<string>('')
 
     const handleSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
         event.preventDefault()
-        console.log('Hola mundo estamos probando')
+
+        if (!name || !price || !description) {
+            throw new Error('An error ocurrs')
+        }
+
+        const newProduct = {
+            id: Date.now(),
+            name,
+            price,
+            description
+        }
+
+        setProducts((prevProducts) => [...prevProducts, newProduct])
+        setName('')
+        setPrice('')
+        setDescription('')
+        console.log(data)
+        return newProduct
     }
 
-    const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 
-    }
 
     return (
         <>
             <h2>Agregate product</h2>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div>
                         <label>
                             Name
-                            <input type="text" value={name} />
+                            <input required={true} type="text" value={name} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)} />
                         </label>
                     </div>
                     <div>
                         <label>
                             Price
-                            <input type="number" value={price} />
+                            <input required={true} type="text" value={price} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPrice(e.target.value)} />
                         </label>
                     </div>
                     <div>
                         <label>
                             Description
-                            <textarea name="" id=""></textarea>
+                            <textarea value={description} required={true} name="" id="" onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setDescription(e.target.value)}></textarea>
                         </label>
                     </div>
+                    <button type="submit">Add</button>
                 </form>
             </div>
         </>

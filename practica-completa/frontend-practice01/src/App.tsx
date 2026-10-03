@@ -10,12 +10,13 @@ import Form from './components/Form'
 
 
 const App = () => {
-  const [products, setProducts] = useState<Product[] | []>([])
+  const [products, setProducts] = useState<Product[] | []>(data)
+
   return (
     <div>
       Hola mundo, vamos a comenzar a probar los tipados con el frontend.
       <ProductList products={products} />
-      <Form />
+      <Form setProducts={setProducts} />
     </div>
   )
 }
