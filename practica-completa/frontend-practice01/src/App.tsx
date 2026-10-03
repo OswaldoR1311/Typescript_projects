@@ -7,18 +7,16 @@ import Form from './components/Form'
 
 
 
-
-
 const App = () => {
-  const [products, setProducts] = useState<Product[] | []>(data)
+    const [products, setProducts] = useState<Product[] | []>(data)
 
-  return (
-    <div>
-      Hola mundo, vamos a comenzar a probar los tipados con el frontend.
-      <ProductList products={products} />
-      <Form setProducts={setProducts} />
-    </div>
-  )
+    return (
+        <div>
+            Hola mundo, vamos a comenzar a probar los tipados con el frontend.
+            <ProductList products={products} />
+            <Form setProducts={setProducts} />
+        </div>
+    )
 }
 
 export default App

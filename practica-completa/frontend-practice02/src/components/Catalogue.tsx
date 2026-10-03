@@ -1,5 +1,4 @@
-import type { Product, CartItem } from "../types/store"
-
+import type { Product, CartItem } from '../types/store';
 
 interface CatalogueProps {
   products: Product[],
@@ -10,22 +9,22 @@ const Catalogue: React.FC<CatalogueProps> = ({ products, addToCart }) => {
 
   const addProduct = (product: Product) => {
     addToCart((prevItems) => {
-      const existingItem = prevItems.find(i => i.id === product.id)
+      const existingItem = prevItems.find(i => i.id === product.id);
 
       if (existingItem) {
         return prevItems.map(item =>
           item.id === product.id
             ? { ...item, quantity: item.quantity + 1 }
-            : item
-        )
+            : item,
+        );
       }
 
-      return [...prevItems, { ...product, quantity: 1 }]
-    })
-  }
+      return [...prevItems, { ...product, quantity: 1 }];
+    });
+  };
 
   if (products.length === 0) {
-    return <p>There are no products available.</p>
+    return <p>There are no products available.</p>;
   }
 
   return (
@@ -43,7 +42,7 @@ const Catalogue: React.FC<CatalogueProps> = ({ products, addToCart }) => {
         ))}
       </ul>
     </div>
-  )
-}
+  );
+};
 
-export default Catalogue
+export default Catalogue;
