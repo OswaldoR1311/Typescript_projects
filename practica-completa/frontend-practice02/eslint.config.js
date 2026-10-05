@@ -24,11 +24,18 @@ export default defineConfig([
       '@stylistic': stylistic,
     },
     rules: {
-      '@stylistic/semi': ['error', 'always'],
-      '@stylistic/indent': ['error', 2],
-      '@stylistic/quotes': ['error', 'single'],
-      '@stylistic/comma-dangle': ['error', 'always-multiline'],
-      '@stylistic/no-multiple-empty-lines': ['error', { max: 1 }]
-    }
+            "@typescript-eslint/consistent-type-imports": "error",
+            '@stylistic/semi': 'error',
+            // '@typescript-eslint/no-unsafe-assignment': 'error',
+            '@typescript-eslint/no-explicit-any': 'error',
+            '@typescript-eslint/explicit-function-return-type': 'off',
+            '@typescript-eslint/explicit-module-boundary-types': 'off',
+            '@typescript-eslint/restrict-template-expressions': 'off',
+            '@typescript-eslint/restrict-plus-operands': 'off',
+            '@typescript-eslint/no-unused-vars': [
+            'error',
+            { argsIgnorePattern: '^_' },
+            ],
+        }
   },
 ])
