@@ -12,4 +12,6 @@ const parseNewDiaryEntry = (object: unknown): NewDiaryEntry => {
     return newEntry;
 };
 
+
+
 export default parseNewDiaryEntry;
