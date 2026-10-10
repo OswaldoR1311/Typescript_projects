@@ -19,7 +19,8 @@ const isDate = (date: string): boolean => {
 };
 
 const parseDate = (date: unknown): string => {
-    if (!date || !isString(date) || !isDate(date)) {
+    //removed !date || 
+    if (!isString(date) || !isDate(date)) {
         throw new Error('Incorrect or missing date: ' + date);
     }
     return date;
@@ -30,7 +31,8 @@ const isWeather = (param: string): param is Weather => {
 };
 
 const parseWeather = (weather: unknown): Weather => {
-    if (!weather || !isString(weather) || !isWeather(weather)) {
+    //removed !weather || 
+    if (!isString(weather) || !isWeather(weather)) {
         throw new Error('Incorrect or missing weather: ' + weather);
     }
     return weather;
@@ -41,22 +43,34 @@ const isVisibility = (param: string): param is Visibility => {
 };
 
 const parseVisibility = (visibility: unknown): Visibility => {
-    if (!visibility || !isString(visibility) || !isVisibility(visibility)) {
+    //removed !visibility || 
+    if (!isString(visibility) || !isVisibility(visibility)) {
         throw new Error('Incorrect or missing visibility: ' + visibility);
     }
     return visibility;
 };
 
 const parseNewDiaryEntry = (object: unknown): NewDiaryEntry => {
-    const newEntry: NewDiaryEntry = {
-        weather: parseWeather(object.weather),
-        visibility: parseVisibility(object.visibility),
-        date: parseDate(object.date),
-        comment: parseComment(object.comment)
-    };
 
-    return newEntry;
+    if (!object || typeof object !== 'object') {
+        throw new Error('Incorrect or missing data');
+    }
+
+    if ('comment' in object && 'date' in object && 'weather' in object && 'visibility' in object) {
+
+        const newEntry: NewDiaryEntry = {
+            weather: parseWeather(object.weather),
+            visibility: parseVisibility(object.visibility),
+            date: parseDate(object.date),
+            comment: parseComment(object.comment)
+        };
+
+        return newEntry;
+    }
+
+    throw new Error('Incorrect data: some fields are missing');
 };
+
 
 
 
